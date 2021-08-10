@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- W tej wersji serwer NIE użyje tego pliku WSDL.
+	My "offline" generujemy klasy na podstawie tego WSDL-a, a serwer podczas deploy na podstawie klas generuje własnego WSDL-a.
+ -->
+
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/KalkulatorRPC/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="KalkulatorRPC" targetNamespace="http://www.example.org/KalkulatorRPC/">
+	<wsdl:documentation>
+		To jest dokumentacja napisana przez autora WSDL.
+	</wsdl:documentation>
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.example.org/KalkulatorRPC/">
+			<xsd:complexType name="ListaIntow">
+				<xsd:sequence>
+					<xsd:element name="arg" type="xsd:int" minOccurs="1" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="zapytanie1Int">
+		<wsdl:part name="arg" type="xsd:int" />
+	</wsdl:message>
+	<wsdl:message name="wynik1Int">
+		<wsdl:part name="result" type="xsd:int"/>
+	</wsdl:message>
+	<wsdl:message name="zapytanie2Inty">
+		<wsdl:part name="arg1" type="xsd:int"/>
+		<wsdl:part name="arg2" type="xsd:int"/>
+	</wsdl:message>
+	<wsdl:message name="wynikDzielenia">
+		<wsdl:part name="quotient" type="xsd:int"/>
+		<wsdl:part name="rest" type="xsd:int"/>
+	</wsdl:message>
+	<wsdl:message name="wynikFloat">
+		<wsdl:part name="result" type="xsd:float"/>
+	</wsdl:message>
+	<wsdl:message name="zapytanieListaIntow">
+		<wsdl:part name="args" type="tns:ListaIntow"/>
+	</wsdl:message>
+
+	<wsdl:portType name="KalkulatorRPC">
+		<wsdl:operation name="inc">
+			<wsdl:input message="tns:zapytanie1Int" />
+			<wsdl:output message="tns:wynik1Int" />
+		</wsdl:operation>
+		<wsdl:operation name="add">
+			<wsdl:input message="tns:zapytanie2Inty"></wsdl:input>
+			<wsdl:output message="tns:wynik1Int"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="sub">
+			<wsdl:input message="tns:zapytanie2Inty"></wsdl:input>
+			<wsdl:output message="tns:wynik1Int"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="mul">
+			<wsdl:input message="tns:zapytanie2Inty"></wsdl:input>
+			<wsdl:output message="tns:wynik1Int"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="div">
+			<wsdl:input message="tns:zapytanie2Inty"></wsdl:input>
+			<wsdl:output message="tns:wynikDzielenia"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="avg">
+			<wsdl:input message="tns:zapytanieListaIntow"></wsdl:input>
+			<wsdl:output message="tns:wynikFloat"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="KalkulatorRPCSOAP" type="tns:KalkulatorRPC">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="inc">
+			<soap:operation soapAction="http://www.example.org/KalkulatorRPC/inc" />
+			<wsdl:input>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="add">
+			<soap:operation soapAction="http://www.example.org/KalkulatorRPC/add" />
+			<wsdl:input>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="sub">
+			<soap:operation	soapAction="http://www.example.org/KalkulatorRPC/sub" />
+			<wsdl:input>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="mul">
+			<soap:operation soapAction="http://www.example.org/KalkulatorRPC/mul" />
+			<wsdl:input>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="div">
+			<soap:operation soapAction="http://www.example.org/KalkulatorRPC/div" />
+			<wsdl:input>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="avg">
+			<soap:operation soapAction="http://www.example.org/KalkulatorRPC/avg" />
+			<wsdl:input>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body namespace="http://www.example.org/KalkulatorRPC/" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="KalkulatorRPC">
+		<wsdl:port binding="tns:KalkulatorRPCSOAP" name="KalkulatorRPCSOAP">
+			<soap:address location="http://www.example.org/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
