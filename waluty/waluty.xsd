@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2021 rel. 3 (x64) (http://www.altova.com) by Patryk Czarnik (self-employed) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="ArrayOfExchangeRatesTable">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ExchangeRatesTable" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ExchangeRatesTable">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Table" type="xs:string"/>
+				<xs:element name="No" type="xs:string"/>
+				<xs:element name="EffectiveDate" type="xs:date"/>
+				<xs:element name="Rates">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="Rate" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Rate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Currency" type="xs:string"/>
+				<xs:element name="Code" type="xs:string"/>
+				<xs:element name="Mid" type="xs:decimal"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

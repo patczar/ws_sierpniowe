@@ -1,0 +1,1 @@
+/opt/java/wildfly-23.0.2.Final/bin/wsconsume.sh -k -n -p waluty.wygenerowane -s src/main/java -o target/classes waluty.wsdl 
