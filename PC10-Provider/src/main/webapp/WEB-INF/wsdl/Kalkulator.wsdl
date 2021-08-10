@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://kalkulator.vavatech.pl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Kalkulator"
+	targetNamespace="http://kalkulator.vavatech.pl">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://kalkulator.vavatech.pl">
+			<xsd:complexType name="TwoInts">
+				<xsd:sequence>
+					<xsd:element name="arg1" type="xsd:int" />
+					<xsd:element name="arg2" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="IntResult">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="DivResponse">
+				<xsd:sequence>
+					<xsd:element name="quotient" type="xsd:int" />
+					<xsd:element name="rest" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:complexType name="FloatSequence">
+				<xsd:sequence>
+					<xsd:element name="arg" type="xsd:float" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="FloatResult">
+				<xsd:sequence>
+					<xsd:element name="result" type="xsd:float"/>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="iadd" type="tns:TwoInts" />
+			<xsd:element name="iaddResponse" type="tns:IntResult" />
+
+			<xsd:element name="isub" type="tns:TwoInts" />
+			<xsd:element name="isubResponse" type="tns:IntResult" />
+
+			<xsd:element name="idiv" type="tns:TwoInts" />
+			<xsd:element name="idivResponse" type="tns:DivResponse" />
+
+			<xsd:element name="fsum" type="tns:FloatSequence" />
+			<xsd:element name="fsumResponse" type="tns:FloatResult" />
+
+			<xsd:element name="favg" type="tns:FloatSequence" />
+			<xsd:element name="favgResponse" type="tns:FloatResult" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="iaddRequest">
+		<wsdl:part element="tns:iadd" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="iaddResponse">
+		<wsdl:part element="tns:iaddResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="isubRequest">
+		<wsdl:part element="tns:isub" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="isubResponse">
+		<wsdl:part element="tns:isubResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="idivRequest">
+		<wsdl:part element="tns:idiv" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="idivResponse">
+		<wsdl:part element="tns:idivResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="fsumRequest">
+		<wsdl:part element="tns:fsum" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="fsumResponse">
+		<wsdl:part element="tns:fsumResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="favgRequest">
+		<wsdl:part element="tns:favg" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="favgResponse">
+		<wsdl:part element="tns:favgResponse" name="parameters" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="Kalkulator">
+		<wsdl:operation name="iadd">
+			<wsdl:input message="tns:iaddRequest" />
+			<wsdl:output message="tns:iaddResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="isub">
+			<wsdl:input message="tns:isubRequest" />
+			<wsdl:output message="tns:isubResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="idiv">
+			<wsdl:input message="tns:idivRequest" />
+			<wsdl:output message="tns:idivResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="fsum">
+			<wsdl:input message="tns:fsumRequest" />
+			<wsdl:output message="tns:fsumResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="favg">
+			<wsdl:input message="tns:favgRequest" />
+			<wsdl:output message="tns:favgResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+
+	<wsdl:binding name="KalkulatorSOAP" type="tns:Kalkulator">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="iadd">
+			<soap:operation soapAction="http://kalkulator.vavatech.pl/iadd" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="isub">
+			<soap:operation soapAction="http://kalkulator.vavatech.pl/isub" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="idiv">
+			<soap:operation soapAction="http://kalkulator.vavatech.pl/idiv" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="fsum">
+			<soap:operation soapAction="http://kalkulator.vavatech.pl/fsum" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="favg">
+			<soap:operation soapAction="http://kalkulator.vavatech.pl/favg" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="Kalkulator">
+		<wsdl:port binding="tns:KalkulatorSOAP" name="KalkulatorXSLT">
+			<soap:address location="http://localhost:8080/P09-Kalkulator_Provider/RunXSLT" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

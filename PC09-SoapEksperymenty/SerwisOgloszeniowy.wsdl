@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://soap.ogloszenia/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="SerwisOgloszeniowyService" targetNamespace="http://soap.ogloszenia/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soap.ogloszenia/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://soap.ogloszenia/">
+  <xs:element name="foto" type="tns:foto"/>
+  <xs:element name="fotoResponse" type="tns:fotoResponse"/>
+  <xs:element name="odczytajJednoOgloszenie" type="tns:odczytajJednoOgloszenie"/>
+  <xs:element name="odczytajJednoOgloszenieResponse" type="tns:odczytajJednoOgloszenieResponse"/>
+  <xs:element name="odczytajOgloszeniaWedlugCeny" type="tns:odczytajOgloszeniaWedlugCeny"/>
+  <xs:element name="odczytajOgloszeniaWedlugCenyResponse" type="tns:odczytajOgloszeniaWedlugCenyResponse"/>
+  <xs:element name="odczytajWszystkieOgloszenia" type="tns:odczytajWszystkieOgloszenia"/>
+  <xs:element name="odczytajWszystkieOgloszeniaResponse" type="tns:odczytajWszystkieOgloszeniaResponse"/>
+  <xs:element name="zapiszOgloszenie" type="tns:zapiszOgloszenie"/>
+  <xs:element name="zapiszOgloszenie2" type="tns:zapiszOgloszenie2"/>
+  <xs:element name="zapiszOgloszenie2Response" type="tns:zapiszOgloszenie2Response"/>
+  <xs:element name="zapiszOgloszenie3" type="tns:zapiszOgloszenie3"/>
+  <xs:element name="zapiszOgloszenie3Response" type="tns:zapiszOgloszenie3Response"/>
+  <xs:element name="zapiszOgloszenieResponse" type="tns:zapiszOgloszenieResponse"/>
+  <xs:complexType name="zapiszOgloszenie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="samochodowe">
+    <xs:complexContent>
+      <xs:extension base="tns:ogloszenie">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="marka" type="xs:string"/>
+          <xs:element minOccurs="0" name="model" type="xs:string"/>
+          <xs:element minOccurs="0" name="generacja" type="xs:string"/>
+          <xs:element minOccurs="0" name="kolor" type="xs:string"/>
+          <xs:element name="rocznik" type="xs:int"/>
+          <xs:element name="przebieg" type="xs:int"/>
+          <xs:element name="pojemnosc" type="xs:float"/>
+          <xs:element name="moc" type="xs:float"/>
+          <xs:element minOccurs="0" name="paliwo" type="tns:paliwo"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ogloszenie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="wystawione" type="xs:string"/>
+      <xs:element minOccurs="0" name="cena" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="lokalizacja" type="xs:string"/>
+      <xs:element minOccurs="0" name="tytul" type="xs:string"/>
+      <xs:element minOccurs="0" name="opis" type="xs:string"/>
+      <xs:element minOccurs="0" name="sprzedawca" type="tns:sprzedawca"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:int"/>
+    <xs:attribute name="id-sprzedawcy" type="xs:int"/>
+  </xs:complexType>
+  <xs:complexType name="sprzedawca">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nazwa" type="xs:string"/>
+      <xs:element minOccurs="0" name="ulica" type="xs:string"/>
+      <xs:element minOccurs="0" name="kod-pocztowy" type="xs:string"/>
+      <xs:element minOccurs="0" name="miasto" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefon" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:int" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="zapiszOgloszenieResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="odczytajJednoOgloszenie">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="odczytajJednoOgloszenieResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="odczytajWszystkieOgloszenia">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="odczytajWszystkieOgloszeniaResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="zapiszOgloszenie3">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="zapiszOgloszenie3Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="zapiszOgloszenie2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="zapiszOgloszenie2Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="odczytajOgloszeniaWedlugCeny">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="min" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="max" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="odczytajOgloszeniaWedlugCenyResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="foto">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fotoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="paliwo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="benzyna"/>
+      <xs:enumeration value="olej"/>
+      <xs:enumeration value="gaz"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BladBazyDanych" type="tns:BladBazyDanych"/>
+  <xs:complexType name="BladBazyDanych">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NieznanyRekord" type="tns:NieznanyRekord"/>
+  <xs:complexType name="NieznanyRekord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="zapiszOgloszenie">
+    <wsdl:part element="tns:zapiszOgloszenie" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="odczytajJednoOgloszenie">
+    <wsdl:part element="tns:odczytajJednoOgloszenie" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="odczytajJednoOgloszenieResponse">
+    <wsdl:part element="tns:odczytajJednoOgloszenieResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="odczytajOgloszeniaWedlugCenyResponse">
+    <wsdl:part element="tns:odczytajOgloszeniaWedlugCenyResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="odczytajWszystkieOgloszeniaResponse">
+    <wsdl:part element="tns:odczytajWszystkieOgloszeniaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="zapiszOgloszenie2Response">
+    <wsdl:part element="tns:zapiszOgloszenie2Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="odczytajOgloszeniaWedlugCeny">
+    <wsdl:part element="tns:odczytajOgloszeniaWedlugCeny" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="odczytajWszystkieOgloszenia">
+    <wsdl:part element="tns:odczytajWszystkieOgloszenia" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="zapiszOgloszenieResponse">
+    <wsdl:part element="tns:zapiszOgloszenieResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="zapiszOgloszenie3">
+    <wsdl:part element="tns:zapiszOgloszenie3" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="zapiszOgloszenie3Response">
+    <wsdl:part element="tns:zapiszOgloszenie3Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="zapiszOgloszenie2">
+    <wsdl:part element="tns:zapiszOgloszenie2" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NieznanyRekord">
+    <wsdl:part element="tns:NieznanyRekord" name="NieznanyRekord">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="foto">
+    <wsdl:part element="tns:foto" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BladBazyDanych">
+    <wsdl:part element="tns:BladBazyDanych" name="BladBazyDanych">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fotoResponse">
+    <wsdl:part element="tns:fotoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SerwisOgloszeniowy">
+    <wsdl:operation name="zapiszOgloszenie">
+      <wsdl:input message="tns:zapiszOgloszenie" name="zapiszOgloszenie">
+    </wsdl:input>
+      <wsdl:output message="tns:zapiszOgloszenieResponse" name="zapiszOgloszenieResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:BladBazyDanych" name="BladBazyDanych">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="odczytajJednoOgloszenie">
+      <wsdl:input message="tns:odczytajJednoOgloszenie" name="odczytajJednoOgloszenie">
+    </wsdl:input>
+      <wsdl:output message="tns:odczytajJednoOgloszenieResponse" name="odczytajJednoOgloszenieResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:NieznanyRekord" name="NieznanyRekord">
+    </wsdl:fault>
+      <wsdl:fault message="tns:BladBazyDanych" name="BladBazyDanych">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="odczytajWszystkieOgloszenia">
+      <wsdl:input message="tns:odczytajWszystkieOgloszenia" name="odczytajWszystkieOgloszenia">
+    </wsdl:input>
+      <wsdl:output message="tns:odczytajWszystkieOgloszeniaResponse" name="odczytajWszystkieOgloszeniaResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:BladBazyDanych" name="BladBazyDanych">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="zapiszOgloszenie3">
+      <wsdl:input message="tns:zapiszOgloszenie3" name="zapiszOgloszenie3">
+    </wsdl:input>
+      <wsdl:output message="tns:zapiszOgloszenie3Response" name="zapiszOgloszenie3Response">
+    </wsdl:output>
+      <wsdl:fault message="tns:BladBazyDanych" name="BladBazyDanych">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="zapiszOgloszenie2">
+      <wsdl:input message="tns:zapiszOgloszenie2" name="zapiszOgloszenie2">
+    </wsdl:input>
+      <wsdl:output message="tns:zapiszOgloszenie2Response" name="zapiszOgloszenie2Response">
+    </wsdl:output>
+      <wsdl:fault message="tns:BladBazyDanych" name="BladBazyDanych">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="odczytajOgloszeniaWedlugCeny">
+      <wsdl:input message="tns:odczytajOgloszeniaWedlugCeny" name="odczytajOgloszeniaWedlugCeny">
+    </wsdl:input>
+      <wsdl:output message="tns:odczytajOgloszeniaWedlugCenyResponse" name="odczytajOgloszeniaWedlugCenyResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:BladBazyDanych" name="BladBazyDanych">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="foto">
+      <wsdl:input message="tns:foto" name="foto">
+    </wsdl:input>
+      <wsdl:output message="tns:fotoResponse" name="fotoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:NieznanyRekord" name="NieznanyRekord">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SerwisOgloszeniowyServiceSoapBinding" type="tns:SerwisOgloszeniowy">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="zapiszOgloszenie">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="zapiszOgloszenie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="zapiszOgloszenieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BladBazyDanych">
+        <soap:fault name="BladBazyDanych" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="odczytajJednoOgloszenie">
+      <soap:operation soapAction="http://ogloszenia.com/jedno" style="document"/>
+      <wsdl:input name="odczytajJednoOgloszenie">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="odczytajJednoOgloszenieResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NieznanyRekord">
+        <soap:fault name="NieznanyRekord" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="BladBazyDanych">
+        <soap:fault name="BladBazyDanych" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="odczytajWszystkieOgloszenia">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="odczytajWszystkieOgloszenia">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="odczytajWszystkieOgloszeniaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BladBazyDanych">
+        <soap:fault name="BladBazyDanych" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="zapiszOgloszenie3">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="zapiszOgloszenie3">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="zapiszOgloszenie3Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BladBazyDanych">
+        <soap:fault name="BladBazyDanych" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="zapiszOgloszenie2">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="zapiszOgloszenie2">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="zapiszOgloszenie2Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BladBazyDanych">
+        <soap:fault name="BladBazyDanych" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="odczytajOgloszeniaWedlugCeny">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="odczytajOgloszeniaWedlugCeny">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="odczytajOgloszeniaWedlugCenyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BladBazyDanych">
+        <soap:fault name="BladBazyDanych" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="foto">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="foto">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="fotoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NieznanyRekord">
+        <soap:fault name="NieznanyRekord" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SerwisOgloszeniowyService">
+    <wsdl:port binding="tns:SerwisOgloszeniowyServiceSoapBinding" name="SerwisOgloszeniowyPort">
+      <soap:address location="http://localhost:8080/PC09-SoapEksperymenty-1.0/SerwisOgloszeniowy"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

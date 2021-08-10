@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<handler-chains xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/javaee_web_services_metadata_handler_2_0.xsd">
+	<handler-chain>
+		<handler>
+			<handler-name>Walidacja</handler-name>
+			<handler-class>ogloszenia.soap.handlers.ValidationHandler</handler-class>
+		</handler>
+		<handler>
+			<handler-name>PasswordHandler</handler-name>
+			<handler-class>ogloszenia.soap.handlers.PasswordHandler</handler-class>
+		</handler>
+		<handler>
+			<handler-name>Logi</handler-name>
+			<handler-class>ogloszenia.soap.handlers.LoggingHandler</handler-class>
+		</handler>
+	</handler-chain>
+</handler-chains>

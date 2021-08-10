@@ -1,0 +1,9 @@
+<bindings xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://java.sun.com/xml/ns/jaxws">
+   <bindings node="//wsdl:portType[@name='SerwisOgloszeniowy']/wsdl:operation[@name='odczytajJednoOgloszenie']">
+      <enableAsyncMapping>true</enableAsyncMapping>
+   </bindings>
+
+   <bindings node="//wsdl:portType[@name='SerwisOgloszeniowy']/wsdl:operation[@name='foto']">
+      <enableAsyncMapping>true</enableAsyncMapping>
+   </bindings>
+</bindings>

@@ -9,70 +9,18 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="incResponse">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="result" type="xsd:int"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
+      <xsd:element name="incResponse" type="tns:WynikInt"/>
 
-      <xsd:element name="add">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="arg1" type="xsd:int"/>
-            <xsd:element name="arg2" type="xsd:int"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="addResponse">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="result" type="xsd:int"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
+      <xsd:element name="add" type="tns:DwaInty"/>
+      <xsd:element name="addResponse" type="tns:WynikInt"/>
 
-      <xsd:element name="sub">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="arg1" type="xsd:int"/>
-            <xsd:element name="arg2" type="xsd:int"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="subResponse">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="result" type="xsd:int"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
+      <xsd:element name="sub" type="tns:DwaInty"/>
+      <xsd:element name="subResponse" type="tns:WynikInt"/>
 
-      <xsd:element name="mul">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="arg1" type="xsd:int"/>
-            <xsd:element name="arg2" type="xsd:int"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="mulResponse">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="result" type="xsd:int"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
+      <xsd:element name="mul" type="tns:DwaInty"/>
+      <xsd:element name="mulResponse" type="tns:WynikInt"/>
 
-      <xsd:element name="div">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="arg1" type="xsd:int"/>
-            <xsd:element name="arg2" type="xsd:int"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
+      <xsd:element name="div" type="tns:DwaInty"/>
       <xsd:element name="divResponse">
         <xsd:complexType>
           <xsd:sequence>
@@ -96,6 +44,19 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      
+      <xsd:complexType name="DwaInty">
+          <xsd:sequence>
+            <xsd:element name="arg1" type="xsd:int"/>
+            <xsd:element name="arg2" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+        
+     <xsd:complexType name="WynikInt">
+          <xsd:sequence>
+            <xsd:element name="result" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
 

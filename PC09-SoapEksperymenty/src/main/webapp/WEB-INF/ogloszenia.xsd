@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soap.ogloszenia/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://soap.ogloszenia/">
+  <xs:element name="foto" type="tns:foto"/>
+  <xs:element name="fotoResponse" type="tns:fotoResponse"/>
+  <xs:element name="odczytajJednoOgloszenie" type="tns:odczytajJednoOgloszenie"/>
+  <xs:element name="odczytajJednoOgloszenieResponse" type="tns:odczytajJednoOgloszenieResponse"/>
+  <xs:element name="odczytajOgloszeniaWedlugCeny" type="tns:odczytajOgloszeniaWedlugCeny"/>
+  <xs:element name="odczytajOgloszeniaWedlugCenyResponse" type="tns:odczytajOgloszeniaWedlugCenyResponse"/>
+  <xs:element name="odczytajWszystkieOgloszenia" type="tns:odczytajWszystkieOgloszenia"/>
+  <xs:element name="odczytajWszystkieOgloszeniaResponse" type="tns:odczytajWszystkieOgloszeniaResponse"/>
+  <xs:element name="zapiszOgloszenie" type="tns:zapiszOgloszenie"/>
+  <xs:element name="zapiszOgloszenie2" type="tns:zapiszOgloszenie2"/>
+  <xs:element name="zapiszOgloszenie2Response" type="tns:zapiszOgloszenie2Response"/>
+  <xs:element name="zapiszOgloszenie3" type="tns:zapiszOgloszenie3"/>
+  <xs:element name="zapiszOgloszenie3Response" type="tns:zapiszOgloszenie3Response"/>
+  <xs:element name="zapiszOgloszenieResponse" type="tns:zapiszOgloszenieResponse"/>
+  <xs:complexType name="zapiszOgloszenie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="samochodowe">
+    <xs:complexContent>
+      <xs:extension base="tns:ogloszenie">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="marka" type="xs:string"/>
+          <xs:element minOccurs="0" name="model" type="xs:string"/>
+          <xs:element minOccurs="0" name="generacja" type="xs:string"/>
+          <xs:element minOccurs="0" name="kolor" type="xs:string"/>
+          <xs:element name="rocznik" type="xs:int"/>
+          <xs:element name="przebieg" type="xs:int"/>
+          <xs:element name="pojemnosc" type="xs:float"/>
+          <xs:element name="moc" type="xs:float"/>
+          <xs:element minOccurs="0" name="paliwo" type="tns:paliwo"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ogloszenie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="wystawione" type="xs:string"/>
+      <xs:element minOccurs="0" name="cena" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="lokalizacja" type="xs:string"/>
+      <xs:element minOccurs="0" name="tytul" type="xs:string"/>
+      <xs:element minOccurs="0" name="opis" type="xs:string"/>
+      <xs:element minOccurs="0" name="sprzedawca" type="tns:sprzedawca"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:int"/>
+    <xs:attribute name="id-sprzedawcy" type="xs:int"/>
+  </xs:complexType>
+  <xs:complexType name="sprzedawca">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nazwa" type="xs:string"/>
+      <xs:element minOccurs="0" name="ulica" type="xs:string"/>
+      <xs:element minOccurs="0" name="kod-pocztowy" type="xs:string"/>
+      <xs:element minOccurs="0" name="miasto" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefon" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:int" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="zapiszOgloszenieResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="odczytajJednoOgloszenie">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="odczytajJednoOgloszenieResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="odczytajWszystkieOgloszenia">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="odczytajWszystkieOgloszeniaResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="zapiszOgloszenie3">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="zapiszOgloszenie3Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="zapiszOgloszenie2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="zapiszOgloszenie2Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="odczytajOgloszeniaWedlugCeny">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="min" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="max" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="odczytajOgloszeniaWedlugCenyResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ogloszenie" type="tns:samochodowe"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="foto">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fotoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="paliwo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="benzyna"/>
+      <xs:enumeration value="olej"/>
+      <xs:enumeration value="gaz"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BladBazyDanych" type="tns:BladBazyDanych"/>
+  <xs:complexType name="BladBazyDanych">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NieznanyRekord" type="tns:NieznanyRekord"/>
+  <xs:complexType name="NieznanyRekord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
+
